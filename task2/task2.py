@@ -1,4 +1,5 @@
 import os
+import sys
 
 
 def check_files(path_1: str, path_2: str) -> bool:
@@ -80,13 +81,12 @@ def check_point_to_circle(path_one: str, path_two: str) -> None:
                         print(f'Некорректные координаты: {line}')
                         continue
                     list_coord_dots.append([float(number) for number in coord_dot])
-        '''После формирования всех данных, передаём их в функция для проверки точек'''
-        check_dots(data=circle_data, list_dots=list_coord_dots)
+                '''После формирования всех данных, передаём их в функция для проверки точек'''
+                check_dots(data=circle_data, list_dots=list_coord_dots)
 
 
 if __name__ == '__main__':
-    file_one_path = os.path.abspath(input('Введите путь к файлу №1: '))
-    file_two_path = os.path.abspath(input('Введите путь к файлу №2: '))
-    check_point_to_circle(path_one=file_one_path,
-                          path_two=file_two_path)
+
+    check_point_to_circle(path_one=sys.argv[1],
+                          path_two=sys.argv[2])
 

@@ -1,4 +1,5 @@
 import json
+import sys
 
 
 def find_id_and_rewrite(dict_values: [dict], list_tests: list) -> None:
@@ -35,11 +36,13 @@ def open_files_and_crate_reports(path_values_file: str, path_tests_file: str) ->
     return report_dict
 
 
-value_file = 'values.json'
-tests_file = 'tests.json'
+def create_report_file(path_values_file: str, path_tests_file: str) -> None:
+    out_file = open_files_and_crate_reports(path_values_file, path_tests_file)
 
-out_file = open_files_and_crate_reports(path_values_file=value_file, path_tests_file=tests_file)
+    with open('reports.json', 'w') as file:
+        json.dump(out_file, file, indent=4)
 
-with open('reports.json', 'w') as file:
-    json.dump(out_file, file, indent=4)
 
+if __name__ == '__main__':
+    create_report_file(sys.argv[1], sys.argv[2])
+    print('Файл reports.json создан')
