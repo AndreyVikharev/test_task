@@ -50,4 +50,4 @@ def find_path(number_n, number_m):
 
 if __name__ == '__main__':
 
-    find_path(sys.argv[1], sys.argv[2])
+    find_path(int(sys.argv[1]), int(sys.argv[2]))
